@@ -10,3 +10,19 @@ class UserInfo(models.Model):
     password = models.CharField(max_length = 200)
 
 
+#discussionTopic is a table which contains the topic description ,userid of the user  who posted the topic and date of the topic
+class DiscussionTopic(models.Model):
+    user = models.ForeignKey('UserInfo')     #user of the post just linking both the tables together
+    topicText = models.CharField(max_length = 1000)
+    timeStamp = models.DateTimeField()
+
+
+#commentOnTopic contais the info about the comments on the topic and the userid of the user who commented and id of the topic o which the comment was made
+class CommentOfTopic(models.Model):
+    user = models.ForeignKey('UserInfo')
+    topic = models.ForeignKey('DiscussionTopic')
+    commentText = models.CharField(max_length = 500)
+    timestamp = models.DateTimeField()
+    
+    
+    
