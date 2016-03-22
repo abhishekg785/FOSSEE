@@ -1,14 +1,25 @@
 from django.shortcuts import render,redirect
-
 from .models import UserInfo,DiscussionTopic
 from .forms import PostTopic,RegisterUser
-
 from django.contrib.auth.hashers import make_password
+from django.http import HttpResponse
+
+
 
 # Create your views here.
 def index(request):
-    print (request.method)
-    return render(request,'index.html',{'form':form})
+    #print (request.method)
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = UserInfo.objects.get(username = username)
+        request.session['user'] = username;
+        print 'session',request.session['user']
+        response  = HttpResponse('the user logged in is'+request.session['user'])
+        return response
+    return render(request,'index.html')
+
+
 
 #view for registering the user
 def register(request):
@@ -29,6 +40,8 @@ def register(request):
     else:
         form = RegisterUser()
     return render(request,'registerUser.html',{'form':form})
+
+
 
 
 def postTopic(request):
