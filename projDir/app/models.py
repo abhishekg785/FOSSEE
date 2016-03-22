@@ -23,6 +23,3 @@ class CommentOfTopic(models.Model):
     topic = models.ForeignKey('DiscussionTopic')
     commentText = models.CharField(max_length = 500)
     timestamp = models.DateTimeField()
-    
-    
-    

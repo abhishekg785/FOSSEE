@@ -13,9 +13,8 @@ def register(request):
    # print request.POST['fname']
     new_user = UserInfo(fname = request.POST['fname'])
     new_user.save()
-    return render(request,'index.html')    
+    return render(request,'index.html')
 
 def postTopic(request):
     topics = DiscussionTopic.objects.all()
     return render(request,'postTopic.html',{'topics':topics})
-
