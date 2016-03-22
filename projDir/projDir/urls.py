@@ -16,9 +16,10 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
-from app.views import index,register
+from app.views import index,register,postTopic
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$',index),
-    url(r'^register/',register)
+    url(r'^register/',register),
+    url(r'^postTopic/',postTopic)
 ]

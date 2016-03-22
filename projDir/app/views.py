@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from .models import UserInfo
+from .models import UserInfo,DiscussionTopic
 # Create your views here.
 def index(request):
     print (request.method)
@@ -15,4 +15,7 @@ def register(request):
     new_user.save()
     return render(request,'index.html')    
 
+def postTopic(request):
+    topics = DiscussionTopic.objects.all()
+    return render(request,'postTopic.html',{'topics':topics})
 
