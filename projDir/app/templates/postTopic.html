@@ -1,14 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
-    <form>
-        <input type='text' name='topic' placeholder='Enter new topic to start.....'/><br/>
-        <input type='submit' name='sub' value='Post Topic' />
+    <h1>Post The Topic</h1>
+    <form method = 'POST' class='post-form'>{% csrf_token %}
+        {{ form.as_p }}
+    <input type='submit' name='sub' value='Post Topic' />
     </form>
-    <hr/>
-    <h1>Previous Topics:</h1>
-    {% for topic in topics %}
-        {{ topic.topicText }}
-        {{ topic. }}        
-    {% endfor %}
 {% endblock %}
-

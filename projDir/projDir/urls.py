@@ -21,5 +21,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$',index),
     url(r'^register/',register),
-    url(r'^postTopic/',postTopic)
+    url(r'^postTopic/',postTopic,name='postTopic')
 ]
