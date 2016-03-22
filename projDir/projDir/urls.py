@@ -20,6 +20,6 @@ from app.views import index,register,postTopic
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$',index),
-    url(r'^register/',register),
+    url(r'^register/',register,name='registerUser'),
     url(r'^postTopic/',postTopic,name='postTopic')
 ]

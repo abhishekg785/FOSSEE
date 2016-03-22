@@ -6,5 +6,5 @@
     <input type='text' name='password' placeholder = 'Password'/><br/>
     <input type='submit' name='submit' value = 'LogIn' />
 </form>
-<a href = '/register' >Not a member yet??Register here</a>
+<a href = "{% url 'registerUser' %}" >Not a member yet??Register here</a>
 {% endblock %}
