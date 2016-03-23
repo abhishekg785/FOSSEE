@@ -16,12 +16,13 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
-from app.views import index,register,postTopic,logout,check,login
+from app.views import index,register,postTopic,logout,login,topicDetails
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$',index,name='index'),
     url(r'^login/$',login,name='login'),
     url(r'^register/',register,name='registerUser'),
     url(r'^postTopic/',postTopic,name='postTopic'),
-    url(r'^logout/',logout,name='logout')
+    url(r'^logout/',logout,name='logout'),
+    url(r'^topicDetails/(?P<id>\d+)/$',topicDetails)
 ]

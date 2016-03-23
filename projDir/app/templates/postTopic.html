@@ -8,6 +8,6 @@
     <hr/>
     {% for topic in topics %}
         <a href = "/topicDetails/{{ topic.id }}">{{ topic.topicText }}</a>{{ topic.timeStamp }}
-        <br/>
+        <hr/>
     {% endfor %}
 {% endblock %}

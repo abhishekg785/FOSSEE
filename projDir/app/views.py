@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .models import UserInfo,DiscussionTopic
+from .models import UserInfo,DiscussionTopic,CommentOfTopic
 from .forms import PostTopic,RegisterUser
 from django.contrib.auth.hashers import make_password
 from django.http import HttpResponse
@@ -84,11 +84,15 @@ def postTopic(request):
     return render(request,'postTopic.html',{'form':form,'topics':topics})
 
 
+@login_required
+def topicDetails(request,id):
+    if request.method == POST:
+        topic = DiscussionTopic.objects.get(id = id)  #instance of topic with id
+        user = UserInfo.objects.get(username = request.session['username'])
+
+    topic = DiscussionTopic.objects.get(id = id)
+    return render(request,'topicDetails.html',{'topic':topic})
 
 def logout(request):
     del request.session['uid']
     return redirect('index')
-
-
-def check(request):
-    return render(request,'check.html')
