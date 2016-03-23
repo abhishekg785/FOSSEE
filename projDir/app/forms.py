@@ -17,6 +17,7 @@ class RegisterUser(forms.ModelForm):
         model = UserInfo
         fields = ('fname','lname','username','password')
 
+
 class PostComment(forms.ModelForm):
     class Meta:
         model = CommentOfTopic

@@ -1,4 +1,6 @@
 from django.shortcuts import render,redirect
+from django.template import RequestContext
+from django.shortcuts import render_to_response
 from .models import UserInfo,DiscussionTopic,CommentOfTopic
 from .forms import PostTopic,RegisterUser,PostComment
 from django.contrib.auth.hashers import make_password
@@ -9,6 +11,8 @@ import datetime
 
 
 #decorators here
+
+#decorator for checking if a user is logged in or not
 def login_required(func):
     def wrapper(request,*args,**kwargs):
         #print request.session['uid']
@@ -115,3 +119,9 @@ def logout(request):
     del request.session['uid']
     del request.session['username']
     return redirect('index')
+
+#handlers
+def  handler404(request):
+    response = render_to_response('404.html',context_instance=RequestContext(request))
+    response.status_code = 404
+    return response
