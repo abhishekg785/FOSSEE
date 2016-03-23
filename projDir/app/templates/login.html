@@ -17,6 +17,9 @@ Not a member yet??<br/>
   <div class ='topicSec'>
     <h1>Recent Topics</h1>
     <hr/>
+    {% if not topics %}
+        <p>No Topics Yet:)</p>
+    {% endif %}
     {% for topic in topics %}
         <p><h3>{{ topic.user.username }}</h3>:{{ topic.topicText }}</p>
         {{ topic.timeStamp }}

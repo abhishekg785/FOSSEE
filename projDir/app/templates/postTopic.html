@@ -8,7 +8,7 @@
     </form>
     </div>
     <h1>Recent Topics:</h1><br/>
-    <p style='color:red'>Note:Just click on any topic to view its comments</p>
+    <p style='color:red'>Note:Just click on any topic to comment and view its comments</p>
     {% for topic in topics %}
         <h1><a href = "/topicDetails/{{ topic.id }}">{{ topic.topicText }}</a></h1><br/>
         <p><span id='byClass'>by:</span>{{ topic.user.username }}</p>
