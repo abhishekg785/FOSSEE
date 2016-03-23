@@ -1,5 +1,5 @@
 body{
-
+  font-family: sans-serif;
 }
 
 a{
@@ -9,4 +9,10 @@ a{
 
 a:hover{
   text-decoration: none;
+}
+
+.page-header a{
+  margin: 5px;
+  font-family:sans-serif;
+  font-size: 15px;
 }

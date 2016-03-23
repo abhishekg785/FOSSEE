@@ -1,15 +1,17 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h1>Post The Topic</h1>
-    <form method = 'POST' class='post-form'>{% csrf_token %}
+    <div class='postTopicSec'>
+    <h1>Post the Topic for Discussion</h1>
+    <form method = 'POST' class='postTopicForm'>{% csrf_token %}
         {{ form.as_p }}
-    <input type='submit' name='sub' value='Post Topic' />
+    <input type='submit' id='subTopic' name='sub' value='Post Topic' />
     </form>
-    <hr/>
-    Recent Topics:<br/>
+    </div>
+    <h1>Recent Topics:</h1><br/>
+    <p style='color:red'>Note:Just click on any topic to view its comments</p>
     {% for topic in topics %}
         <h1><a href = "/topicDetails/{{ topic.id }}">{{ topic.topicText }}</a></h1><br/>
-        <h3>{{ topic.user.username }}</h3><br/>
+        <p><span id='byClass'>by:</span>{{ topic.user.username }}</p>
         {{ topic.timeStamp }}
         <hr/>
     {% endfor %}

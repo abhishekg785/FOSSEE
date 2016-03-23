@@ -3,12 +3,14 @@
 <link rel="stylesheet" type="text/css" href="{% static 'app/style.css' %}" />
 {{ static }}
 {% block content %}
+<div class='page-header'>
 <h1>Welcome to the Discussion Form!!!!</h1>
 {% if request.session.username and request.session.uid %}
     Welcome {{ request.session.username }}!!!
 {% else %}
-    <a href = "{% url 'login' %}">Login</a><br/>
-    <a href = "{% url 'registerUser' %}">Register</a><br/>
-    <a href = "{% url 'viewTopics' %}">Topics</a>
+<a href = "{% url 'login' %}">Login</a>
+<a href = "{% url 'registerUser' %}">Register</a>
+<a href = "{% url 'viewTopics' %}">Topics</a>
+</div>
 {% endif %}
 {% endblock %}

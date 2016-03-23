@@ -1,0 +1,28 @@
+.postTopicSec{
+    margin-top: 0px;
+    padding-left: 330px;
+    border-bottom: 2px solid black;
+    padding-bottom: 50px;
+    padding-top: 20px;
+}
+
+.postTopicSec input{
+    border: 1px solid black;
+    height: 30px;
+    width:470px;
+}
+
+#subTopic{
+    border: 1px solid #23527c;
+    height: 25px;
+    width:100px;
+}
+
+#baseHeader{
+  border-bottom: 2px solid black;
+}
+
+#byClass{
+  color:#23527c;
+  font-size: 20px;
+}
