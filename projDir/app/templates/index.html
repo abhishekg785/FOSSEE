@@ -6,7 +6,7 @@
 <div class='page-header'>
 <h1>Welcome to the Discussion Form!!!!</h1>
 {% if request.session.username and request.session.uid %}
-    Welcome {{ request.session.username }}!!!
+    User Logged In:<h1>{{ request.session.username }}</h1>
 {% else %}
 <a href = "{% url 'login' %}">Login</a>
 <a href = "{% url 'registerUser' %}">Register</a>
