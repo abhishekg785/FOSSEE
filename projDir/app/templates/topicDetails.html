@@ -6,9 +6,14 @@
     <input type='submit' name='sub' value='Post Comment'/>
 </form>
 <hr/>
-Previous Comments:
-<!-- {% for comment in comments %}
-    {{ commment.commentText }}
+Comments:
+<br/>
+{% for comment in comments %}
+  {% if comment.topic.id == topic.id %}
+    <h3>{{ comment.user.username }}</h3>
+    <h1>{{ comment.commentText }}</h1>
     {{ comment.timeStamp }}
-{% endfor %} -->
+    <hr/>
+  {% endif %}
+{% endfor %}
 {% endblock %}

@@ -85,10 +85,15 @@ def postTopic(request):
 
 @login_required
 def topicDetails(request,id):
-    form = PostComment()
     topic = DiscussionTopic.objects.get(id = id)
-    return render(request,'topicDetails.html',{'form':form,'topic':topic})
+    form = PostComment()
+    try:
+        comments = CommentOfTopic.objects.all()
+    except:
+        return render(request,'topicDetails.html',{'form':form,'topic':topic})
+    return render(request,'topicDetails.html',{'form':form,'topic':topic,'comments':comments})
 
+@login_required
 def postComment(request,id):
     if request.method == 'POST':
         form  = PostComment(request.POST)

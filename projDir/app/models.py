@@ -20,6 +20,6 @@ class DiscussionTopic(models.Model):
 #commentOnTopic contais the info about the comments on the topic and the userid of the user who commented and id of the topic o which the comment was made
 class CommentOfTopic(models.Model):
     user = models.ForeignKey('UserInfo')
-    topic = models.ForeignKey('DiscussionTopic')
-    commentText = models.TextField(max_length = 1000)
-    timestamp = models.DateTimeField(null = True)
+    topic = models.ForeignKey('DiscussionTopic',related_name='comments')
+    commentText = models.TextField(max_length = 500)
+    timeStamp = models.DateTimeField()

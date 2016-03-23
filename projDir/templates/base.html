@@ -10,6 +10,9 @@
   </head>
   <body>
    <div class="container">
+    {% if request.session.user and request.session.uid %}
+    <header><span>Welcome <h1>{{ request.session.user }}</h1></span> <a href='/logout'>Logout</a></header>
+    {% endif %}
     {% block content %}
     {% endblock %}
    </div>
