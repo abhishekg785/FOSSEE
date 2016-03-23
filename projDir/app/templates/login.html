@@ -18,10 +18,10 @@ Not a member yet??<br/>
     <h1>Recent Topics</h1>
     <hr/>
     {% if not topics %}
-        <p>No Topics Yet:)</p>
+        <p><span>No Topics Yet:)</span></p>
     {% endif %}
     {% for topic in topics %}
-        <p><h3>{{ topic.user.username }}</h3>:{{ topic.topicText }}</p>
+        <p><h3>{{ topic.user.username }}</h3>{{ topic.topicText }}</p>
         {{ topic.timeStamp }}
         <hr/>
     {% endfor %}
