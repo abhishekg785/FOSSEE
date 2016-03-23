@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
 <h1>Welcome to the Discussion Form!!!!</h1>
-<a href = "{% url 'login' %}">Login</a><br/>
-<a href = "{% url 'registerUser' %}">Register</a>
+{% if request.session.username and request.session.uid %}
+    Welcome {{ request.session.username }}!!!
+{% else %}
+    <a href = "{% url 'login' %}">Login</a><br/>
+    <a href = "{% url 'registerUser' %}">Register</a><br/>
+    <a href = "{% url 'viewTopics' %}">Topics</a>
+{% endif %}
 {% endblock %}

@@ -11,7 +11,8 @@
   <body>
    <div class="container">
     {% if request.session.user and request.session.uid %}
-    <header><span>Welcome <h1>{{ request.session.user }}</h1></span> <a href='/logout'>Logout</a></header>
+    <header><a href="{% url 'postTopic' %}">Home</a><a href='/logout'>Logout</a></header>
+    <hr/>
     {% endif %}
     {% block content %}
     {% endblock %}

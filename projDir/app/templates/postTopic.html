@@ -6,8 +6,11 @@
     <input type='submit' name='sub' value='Post Topic' />
     </form>
     <hr/>
+    Recent Topics:<br/>
     {% for topic in topics %}
-        <a href = "/topicDetails/{{ topic.id }}">{{ topic.topicText }}</a>{{ topic.timeStamp }}
+        <h1><a href = "/topicDetails/{{ topic.id }}">{{ topic.topicText }}</a></h1><br/>
+        <h3>{{ topic.user.username }}</h3><br/>
+        {{ topic.timeStamp }}
         <hr/>
     {% endfor %}
 {% endblock %}

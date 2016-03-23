@@ -8,11 +8,20 @@ import md5
 import datetime
 
 
+#decorators here
+def login_required(func):
+    def wrapper(request,*args,**kwargs):
+        #print request.session['uid']
+        if 'uid' not in request.session.keys():
+            return redirect('login')
+        return func(request,*args,**kwargs)
+    return wrapper
+
+
 
 # Create your views here.
 def index(request):
     return render(request,'index.html')
-
 
 
 def login(request):
@@ -37,7 +46,6 @@ def login(request):
     return render(request,'login.html')
 
 
-
 #view for registering the user
 def register(request):
     if request.method == 'POST':
@@ -57,14 +65,6 @@ def register(request):
     return render(request,'registerUser.html',{'form':form})
 
 
-def login_required(func):
-    def wrapper(request,*args,**kwargs):
-        #print request.session['uid']
-        if 'uid' not in request.session.keys():
-            return redirect('login')
-        return func(request,*args,**kwargs)
-    return wrapper
-
 @login_required
 def postTopic(request):
     if request.method == 'POST':
@@ -79,7 +79,7 @@ def postTopic(request):
             return redirect('postTopic')
     else:
         form  = PostTopic()
-        topics = DiscussionTopic.objects.all()
+        topics = DiscussionTopic.objects.all().order_by('-timeStamp');
     return render(request,'postTopic.html',{'form':form,'topics':topics})
 
 
@@ -87,11 +87,9 @@ def postTopic(request):
 def topicDetails(request,id):
     topic = DiscussionTopic.objects.get(id = id)
     form = PostComment()
-    try:
-        comments = CommentOfTopic.objects.all()
-    except:
-        return render(request,'topicDetails.html',{'form':form,'topic':topic})
+    comments = CommentOfTopic.objects.all().order_by('-timeStamp')
     return render(request,'topicDetails.html',{'form':form,'topic':topic,'comments':comments})
+
 
 @login_required
 def postComment(request,id):
@@ -107,6 +105,13 @@ def postComment(request,id):
             return redirect('/topicDetails/'+id)
     return redirect('/topicDetails/'+id)
 
+
+def viewTopics(request):
+    topics = DiscussionTopic.objects.all().order_by('-timeStamp')
+    return render(request,'viewTopics.html',{'topics':topics})
+
+
 def logout(request):
     del request.session['uid']
+    del request.session['username']
     return redirect('index')
