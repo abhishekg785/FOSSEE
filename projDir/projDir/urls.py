@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
-from app.views import index,register,postTopic,logout,login,topicDetails
+from app.views import index,register,postTopic,logout,login,topicDetails,postComment
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$',index,name='index'),
@@ -24,5 +24,6 @@ urlpatterns = [
     url(r'^register/',register,name='registerUser'),
     url(r'^postTopic/',postTopic,name='postTopic'),
     url(r'^logout/',logout,name='logout'),
-    url(r'^topicDetails/(?P<id>\d+)/$',topicDetails)
+    url(r'^topicDetails/(?P<id>\d+)/$',topicDetails),
+    url(r'^postComment/(?P<id>\d+)/comment$',postComment)
 ]

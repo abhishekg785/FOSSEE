@@ -13,7 +13,7 @@ class UserInfo(models.Model):
 #discussionTopic is a table which contains the topic description ,userid of the user  who posted the topic and date of the topic
 class DiscussionTopic(models.Model):
     user = models.ForeignKey('UserInfo')     #user of the post just linking both the tables together
-    topicText = models.CharField(max_length = 1000,blank=False)
+    topicText = models.CharField(max_length = 1000)
     timeStamp = models.DateTimeField()
 
 
@@ -22,4 +22,4 @@ class CommentOfTopic(models.Model):
     user = models.ForeignKey('UserInfo')
     topic = models.ForeignKey('DiscussionTopic')
     commentText = models.TextField(max_length = 1000)
-    timestamp = models.DateTimeField()
+    timestamp = models.DateTimeField(null = True)

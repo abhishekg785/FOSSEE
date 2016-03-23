@@ -1,5 +1,5 @@
 from django import forms
-from .models import DiscussionTopic,UserInfo
+from .models import DiscussionTopic,UserInfo,CommentOfTopic
 
 #postTopic is the name of my form
 class PostTopic(forms.ModelForm):
@@ -17,7 +17,7 @@ class RegisterUser(forms.ModelForm):
         model = UserInfo
         fields = ('fname','lname','username','password')
 
-class PostComment(forms.modelForm):
+class PostComment(forms.ModelForm):
     class Meta:
         model = CommentOfTopic
-        fields = ('commentText')
+        fields = ('commentText',)

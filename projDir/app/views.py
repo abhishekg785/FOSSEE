@@ -1,11 +1,11 @@
 from django.shortcuts import render,redirect
 from .models import UserInfo,DiscussionTopic,CommentOfTopic
-from .forms import PostTopic,RegisterUser
+from .forms import PostTopic,RegisterUser,PostComment
 from django.contrib.auth.hashers import make_password
 from django.http import HttpResponse
 from django.utils import timezone
-import datetime
 import md5
+import datetime
 
 
 
@@ -71,7 +71,6 @@ def postTopic(request):
         form = PostTopic(request.POST)
         if form.is_valid():
             post = form.save(commit = False)
-            print request.session['username']
             user = UserInfo.objects.get(username = request.session['username'])
             post.user = user
             post.topicText = request.POST['topicText']
@@ -86,12 +85,22 @@ def postTopic(request):
 
 @login_required
 def topicDetails(request,id):
-    if request.method == POST:
-        topic = DiscussionTopic.objects.get(id = id)  #instance of topic with id
-        user = UserInfo.objects.get(username = request.session['username'])
-
+    form = PostComment()
     topic = DiscussionTopic.objects.get(id = id)
-    return render(request,'topicDetails.html',{'topic':topic})
+    return render(request,'topicDetails.html',{'form':form,'topic':topic})
+
+def postComment(request,id):
+    if request.method == 'POST':
+        form  = PostComment(request.POST)
+        if form.is_valid():
+            post = form.save(commit = False)
+            post.topic = DiscussionTopic.objects.get(id = id)  #instance of topic with id
+            post.user = UserInfo.objects.get(username = request.session['username'])  #instance of the user
+            post.commentText = request.POST['commentText']
+            post.timeStamp = datetime.datetime.now()
+            post.save()
+            return redirect('/topicDetails/'+id)
+    return redirect('/topicDetails/'+id)
 
 def logout(request):
     del request.session['uid']

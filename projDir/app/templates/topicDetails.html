@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
 <h1>{{ topic.topicText }}</h1><h3>{{ topic.timeStamp }}</h3>
-<form method = 'POST' action = 'postComment'>{% csrf_token %}
-    <textarea name = 'comment' placeholder="What do you think..."></textarea><br/>
-    <input type='submit' name='sub' value='Post Comment' />
+<form method = 'POST' action = "/postComment/{{topic.id}}/comment">{% csrf_token %}
+    {{ form.as_p }}
+    <input type='submit' name='sub' value='Post Comment'/>
 </form>
 <hr/>
 Previous Comments:
