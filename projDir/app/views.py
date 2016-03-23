@@ -47,7 +47,8 @@ def login(request):
                 return HttpResponse('Username and Password mismatch')
         except:
             return HttpResponse('No such User');
-    return render(request,'login.html')
+    topics = DiscussionTopic.objects.all()
+    return render(request,'login.html',{'topics':topics})
 
 
 #view for registering the user

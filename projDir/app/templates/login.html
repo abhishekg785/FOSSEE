@@ -1,11 +1,27 @@
 {% extends 'base.html' %}
-
 {% block content %}
+<div class = "col-md-6 text-center">
+<div class='loginSection'>
 <h1>Login</h1>
 <form method='POST'>{% csrf_token %}
     <input type='text' name = 'username' placeholder = 'Username' /><br/>
     <input type='password' name='password' placeholder = 'Password'/><br/>
-    <input type='submit' name='submit' value = 'LogIn' />
+    <input type='submit' id='loginBut' name='submit' value = 'LogIn' />
 </form>
-<a href = "{% url 'registerUser' %}" >Not a member yet??Register here</a>
+Not a member yet??<br/>
+<a href = "{% url 'registerUser' %}" >
+  Register here</a>
+</div>
+</div>
+<div class = "col-md-6 text-center">
+  <div class ='topicSec'>
+    <h1>Recent Topics</h1>
+    <hr/>
+    {% for topic in topics %}
+        <p><h3>{{ topic.user.username }}</h3>:{{ topic.topicText }}</p>
+        {{ topic.timeStamp }}
+        <hr/>
+    {% endfor %}
+  </div>
+</div>
 {% endblock %}

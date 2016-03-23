@@ -1,7 +1,12 @@
 body{
-  background-color: green;
+
 }
 
-button{
-  border: 2px solid black;
+a{
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a:hover{
+  text-decoration: none;
 }
