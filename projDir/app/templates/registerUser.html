@@ -1,9 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
+<div class='page-header'>
 <h1>Register</h1>
-<form method = 'POST' action = 'register'>{% csrf_token %}
+</div>
+<div class='registerSec'>
+<form method = 'POST'>{% csrf_token %}
     {{ form.as_p }}
-<input type='submit' name='sub' value='Register' />
+<input type='submit' id='subRegister' name='sub' value='Register' />
 </form>
-<a href = "{% url 'login' %}">Already a member!!!Log In</a>
+<p>Already a member</p>
+<a href = "{% url 'login' %}">Log In</a>
+</div>
 {% endblock %}

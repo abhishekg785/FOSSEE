@@ -19,6 +19,7 @@ class RegisterUser(forms.ModelForm):
 
 
 class PostComment(forms.ModelForm):
+    commentText = forms.CharField(label = '',widget=forms.Textarea(attrs={ 'cols' : "30", 'rows': "3", }))
     class Meta:
         model = CommentOfTopic
         fields = ('commentText',)

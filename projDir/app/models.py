@@ -7,7 +7,7 @@ class UserInfo(models.Model):
     fname = models.CharField(max_length = 200)
     lname = models.CharField(max_length = 200)
     username = models.CharField(max_length = 200,unique = True)
-    password = models.CharField(max_length = 200)
+    password = models.CharField(max_length = 10)
 
 
 #discussionTopic is a table which contains the topic description ,userid of the user  who posted the topic and date of the topic

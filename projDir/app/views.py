@@ -47,7 +47,7 @@ def login(request):
                 return HttpResponse('Username and Password mismatch')
         except:
             return HttpResponse('No such User');
-    topics = DiscussionTopic.objects.all()
+    topics = DiscussionTopic.objects.all().order_by('-timeStamp')
     return render(request,'login.html',{'topics':topics})
 
 

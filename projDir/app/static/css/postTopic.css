@@ -1,13 +1,13 @@
 .postTopicSec{
     margin-top: 0px;
     padding-left: 330px;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid #23527c;
     padding-bottom: 50px;
     padding-top: 20px;
 }
 
 .postTopicSec input{
-    border: 1px solid black;
+    border: 1px solid #23527c;
     height: 30px;
     width:470px;
 }
@@ -19,7 +19,7 @@
 }
 
 #baseHeader{
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid #23527c;
 }
 
 #byClass{

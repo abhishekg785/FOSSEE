@@ -1,17 +1,20 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>{{ topic.topicText }}</h1><h3>{{ topic.timeStamp }}</h3>
-<form method = 'POST' action = "/postComment/{{topic.id}}/comment">{% csrf_token %}
+<div class='postDetailsSec'>
+<h1>{{ topic.topicText }}</h1>
+<p>{{ topic.timeStamp }}</p>
+<p>Post Comment here:</p>
+<form method = 'POST' class='topicDetailSec' action = "/postComment/{{topic.id}}/comment">{% csrf_token %}
     {{ form.as_p }}
     <input type='submit' name='sub' value='Post Comment'/>
 </form>
+</div>
+<h1>Comments:</h1>
 <hr/>
-Comments:
-<br/>
 {% for comment in comments %}
   {% if comment.topic.id == topic.id %}
-    <h3>{{ comment.user.username }}</h3>
     <h1>{{ comment.commentText }}</h1>
+    <span id='byClass'>by:</span>{{ comment.user.username }}<br/>
     {{ comment.timeStamp }}
     <hr/>
   {% endif %}
