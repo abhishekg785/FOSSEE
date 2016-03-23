@@ -5,4 +5,9 @@
         {{ form.as_p }}
     <input type='submit' name='sub' value='Post Topic' />
     </form>
+    <hr/>
+    {% for topic in topics %}
+        <a href = "/topicDetails/{{ topic.id }}">{{ topic.topicText }}</a>{{ topic.timeStamp }}
+        <br/>
+    {% endfor %}
 {% endblock %}
