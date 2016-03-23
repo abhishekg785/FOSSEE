@@ -4,6 +4,7 @@ from .forms import PostTopic,RegisterUser
 from django.contrib.auth.hashers import make_password
 from django.http import HttpResponse
 from django.utils import timezone
+import datetime
 import md5
 
 
@@ -56,7 +57,15 @@ def register(request):
     return render(request,'registerUser.html',{'form':form})
 
 
+def login_required(func):
+    def wrapper(request,*args,**kwargs):
+        #print request.session['uid']
+        if 'uid' not in request.session.keys():
+            return redirect('login')
+        return func(request,*args,**kwargs)
+    return wrapper
 
+@login_required
 def postTopic(request):
     if request.method == 'POST':
         form = PostTopic(request.POST)
@@ -66,7 +75,7 @@ def postTopic(request):
             user = UserInfo.objects.get(username = request.session['username'])
             post.user = user
             post.topicText = request.POST['topicText']
-            post.timeStamp = timezone.now()
+            post.timeStamp = datetime.datetime.now() #change the time according to country
             post.save()
             return redirect('postTopic')
     else:
@@ -77,6 +86,7 @@ def postTopic(request):
 
 
 def logout(request):
+    del request.session['uid']
     return redirect('index')
 
 
