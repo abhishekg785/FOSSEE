@@ -1,4 +1,7 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'app/style.css' %}" />
+{{ static }}
 {% block content %}
 <h1>Welcome to the Discussion Form!!!!</h1>
 {% if request.session.username and request.session.uid %}
