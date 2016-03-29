@@ -16,7 +16,7 @@
   </head>
   <body>
    <div class="container">
-    {% if request.session.user and request.session.uid %}
+    {% if request.session.username and request.session.uid %}
     <div id='baseHeader' class='page-header'><a href="{% url 'postTopic' %}">Home</a><a href='/logout'>LogOut</a></div>
     {% endif %}
     {% block content %}
