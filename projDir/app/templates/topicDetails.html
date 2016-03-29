@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class='postDetailsSec'>
-<h1>{{ topic.topicText }}</h1>
+<h1 id='topicHeading'>{{ topic.topicText }}</h1>
 <p>{{ topic.timeStamp }}</p>
 <p>Post Comment here:</p>
 <form method = 'POST' class='topicDetailSec' action = "/postComment/{{topic.id}}/comment">{% csrf_token %}

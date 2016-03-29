@@ -27,5 +27,5 @@ urlpatterns = [
     url(r'^logout/$',logout,name='logout'),
     url(r'^topicDetails/(?P<id>\d+)/$',topicDetails),
     url(r'^postComment/(?P<id>\d+)/comment$',postComment),
-    url(r'^viewTopics/',viewTopics,name='viewTopics')
+    url(r'^viewTopics/$',viewTopics,name='viewTopics')
 ]

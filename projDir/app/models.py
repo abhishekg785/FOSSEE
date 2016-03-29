@@ -9,6 +9,8 @@ class UserInfo(models.Model):
     username = models.CharField(max_length = 200,unique = True)
     password = models.CharField(max_length = 10)
 
+    def __str__(self):
+        return self.username
 
 #discussionTopic is a table which contains the topic description ,userid of the user  who posted the topic and date of the topic
 class DiscussionTopic(models.Model):
